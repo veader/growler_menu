@@ -1,6 +1,7 @@
 require "sinatra"
 require "nokogiri"
 require "open-uri"
+require "json"
 
 class GrowlerMenuApplication < Sinatra::Base
 	get "/menu" do
