@@ -4,7 +4,7 @@ require "open-uri"
 require "json"
 
 class GrowlerMenuApplication < Sinatra::Base
-	get "/menu" do
+	get "/beers" do
 		menu_url = "http://www.beergrowlernation.com/opening/?q=beermenu"
 		doc = Nokogiri::HTML(open(menu_url))
 
@@ -27,6 +27,6 @@ class GrowlerMenuApplication < Sinatra::Base
 				beer
 			end
 
-		beers.to_json
+		{ beers: beers }.to_json
 	end
 end
