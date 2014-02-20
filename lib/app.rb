@@ -4,9 +4,12 @@ require "open-uri"
 require "json"
 
 class GrowlerMenuApplication < Sinatra::Base
-	get "/" do
-		send_file File.join(APP_DIR, 'public/index.html')
-	end
+	set :static, true
+	set :public_folder, File.join(APP_DIR, 'public')
+
+	# get "/" do
+	# 	send_file File.join(APP_DIR, 'public/index.html')
+	# end
 
 	get "/beers" do
 		menu_url = "http://www.beergrowlernation.com/opening/?q=beermenu"
