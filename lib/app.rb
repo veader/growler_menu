@@ -5,6 +5,7 @@ require "json"
 
 class GrowlerMenuApplication < Sinatra::Base
 	set :static, true
+	set :root, GrowlerMenuApplication.root
 	set :public_folder, File.join(APP_DIR, 'public')
 
 	# get "/" do
