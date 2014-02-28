@@ -26,7 +26,7 @@ class GrowlerMenuApplication < Sinatra::Base
 
 		beers = \
 			rows.collect do |row|
-				{ brewer: 		 row[0],
+				{ name: 		 	row[0],
 				  location: 	 row[1],
 					description: row[2],
 					abv: 				row[3],

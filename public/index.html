@@ -13,6 +13,10 @@
     {{outlet}}
   </script>
 
+  <script type="text/x-handlebars" id="loading">
+    <h3>Loading Beers...</h3>
+  </script>
+
   <script type="text/x-handlebars" id="index">
     {{view Ember.Select
             content=beerTypes
@@ -22,9 +26,9 @@
     <table>
       <thead>
         <tr>
-          <td>Description</td>
-          <td>Brewer</td>
+          <td>Name</td>
           <td>Location</td>
+          <td>Description</td>
           <td>Type</td>
           <td>ABV</td>
         </tr>
@@ -32,9 +36,9 @@
       <tbody>
         {{#each beer in sortedBeers}}
           <tr>
-            <td>{{beer.description}}</td>
-            <td>{{beer.brewer}}</td>
+            <td>{{beer.name}}</td>
             <td>{{beer.location}}</td>
+            <td>{{beer.description}}</td>
             <td>{{beer.type}}</td>
             <td>{{beer.abv}}</td>
           </tr>

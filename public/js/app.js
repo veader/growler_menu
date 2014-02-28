@@ -6,7 +6,7 @@ GrowlerApp.Router.map(function() {
 
 var attr = DS.attr;
 GrowlerApp.Beer = DS.Model.extend({
-	brewer: attr(),
+	name: attr(),
 	location: attr(),
 	description: attr(),
 	abv: attr(),
@@ -22,6 +22,7 @@ GrowlerApp.IndexRoute = Ember.Route.extend({
     controller.set('model', model);
   }
 });
+//GrowlerApp.IndexLoadingRoute = Ember.Route.extend({});
 
 GrowlerApp.IndexController = Ember.ArrayController.extend({
   selectedBeerType: null,
