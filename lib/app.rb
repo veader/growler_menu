@@ -26,13 +26,12 @@ class GrowlerMenuApplication < Sinatra::Base
 
 		beers = \
 			rows.collect do |row|
-				beer = {}
-				beer[:brewer] = row[0]
-				beer[:location] = row[1]
-				beer[:description] = row[2]
-				beer[:abv] = row[3]
-				beer[:type] = row[4]
-				beer
+				{ brewer: 		 row[0],
+				  location: 	 row[1],
+					description: row[2],
+					abv: 				row[3],
+					type: 			 row[4],
+				}
 			end
 
 		{ beers: beers }.to_json
