@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Ember Starter Kit</title>
+  <title>Beer Growler Nation Menu</title>
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -14,11 +14,33 @@
   </script>
 
   <script type="text/x-handlebars" id="index">
-    <ul>
-    {{#each beer in model}}
-      <li>{{beer.brewer}}</li>
-    {{/each}}
-    </ul>
+    {{view Ember.Select
+            content=beerTypes
+            value=selectedBeerType
+            prompt='Select type to filter...'}}
+    <br>
+    <table>
+      <thead>
+        <tr>
+          <td>Description</td>
+          <td>Brewer</td>
+          <td>Location</td>
+          <td>Type</td>
+          <td>ABV</td>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each beer in sortedBeers}}
+          <tr>
+            <td>{{beer.description}}</td>
+            <td>{{beer.brewer}}</td>
+            <td>{{beer.location}}</td>
+            <td>{{beer.type}}</td>
+            <td>{{beer.abv}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
   </script>
 
   <script src="js/libs/jquery-1.10.2.js"></script>
