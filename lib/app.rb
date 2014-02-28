@@ -6,10 +6,10 @@ require "json"
 class GrowlerMenuApplication < Sinatra::Base
 	set :static, true
 	set :root, GrowlerMenuApplication.root
-	set :public_folder, File.join(APP_DIR, 'public')
+	set :public_folder, File.join(APP_DIR, "public")
 
 	get "/" do
-		send_file File.join(APP_DIR, 'public/index.html')
+		send_file File.join(APP_DIR, "public/index.html")
 	end
 
 	get "/beers" do
@@ -18,7 +18,7 @@ class GrowlerMenuApplication < Sinatra::Base
 
 		rows = []
 		doc.css("div.view-content table tbody tr").each do |table_row|
-			row = table_row.css('td').collect { |col| col.content.strip }
+			row = table_row.css("td").collect { |col| col.content.strip }
 			row.shift # empty image row first...
 			rows << row
 		end
