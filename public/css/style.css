@@ -2,3 +2,18 @@
 .ember-application {
     margin: 20px;
 }
+
+body {
+  padding-top: 50px;
+  padding-bottom: 30px;
+}
+
+.blackbar {
+  background-color:#222;
+  height:10px;
+  margin-bottom:20px;
+}
+
+.muted {
+  color:#AAA;
+}

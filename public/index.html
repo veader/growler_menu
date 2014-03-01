@@ -1,56 +1,81 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <title>Beer Growler Nation Menu</title>
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/style.css">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
 </head>
-<body>
+<body role="document">
   <script type="text/x-handlebars">
-    <h2><a href="http://www.beergrowlernation.com/">Beer Growler Nation</a></h2>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="http://www.beergrowlernation.com/">Beer Growler Nation</a>
+        </div>
+      </div>
+    </div>
 
-    {{outlet}}
+    <div class="container" role="main">
+      <div class="row col-xs-12 col-md-8">
+        {{outlet}}
+      </div>
+    </div>
   </script>
 
   <script type="text/x-handlebars" id="loading">
-    <h3>Loading Beers...</h3>
+    <p class="lead text-center">Loading Beers...</p>
   </script>
 
   <script type="text/x-handlebars" id="index">
-    {{view Ember.Select
-            content=beerTypes
-            value=selectedBeerType
-            prompt='Select type to filter...'}}
-    <br>
-    <table>
-      <thead>
-        <tr>
-          <td>Name</td>
-          <td>Location</td>
-          <td>Description</td>
-          <td>Type</td>
-          <td>ABV</td>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each beer in sortedBeers}}
-          <tr>
-            <td>{{beer.name}}</td>
-            <td>{{beer.location}}</td>
-            <td>{{beer.description}}</td>
-            <td>{{beer.type}}</td>
-            <td>{{beer.abv}}</td>
-          </tr>
-        {{/each}}
-      </tbody>
-    </table>
+    <div class="row">
+      <div class="col-xs-4 hidden-lg hidden-md"></div>
+      <div class="col-xs-3 col-md-4">
+        <img src="images/beergrowlernation_logo.png">
+      </div>
+      <div class="col-xs-4 hidden-lg hidden-md"></div>
+    </div>
+    <div>
+      {{view Ember.Select
+              content=beerTypes
+              value=selectedBeerType
+              prompt='Select type to filter...'}}
+    </div>
+    <hr>
+    <div class="list-group">
+      {{#each beer in sortedBeers}}
+        <div class="list-group-item">
+          <h4 class="list-group-item-heading">{{beer.name}}</h4>
+          <p class="list-group-item-text">
+            {{beer.location}} <br>
+            <small class="muted">{{beer.type}}</small>
+          </p>
+        </div>
+      {{/each}}
+    </div>
+  </script>
+
+  <script type="text/x-handlebars" id="hidden">
+    <td>Description</td>
+    <td>ABV</td>
+    <td>{{beer.description}}</td>
+    <td>{{beer.abv}}</td>
   </script>
 
   <script src="js/libs/jquery-1.10.2.js"></script>
+  <script src="js/bootstrap.min.js"></script>
   <script src="js/libs/handlebars-1.1.2.js"></script>
   <script src="js/libs/ember-1.4.0.js"></script>
-  <script src="http://builds.emberjs.com/canary/ember-data.min.js"></script>
+  <script src="js/libs/ember-data-1.0.0b7.js"></script>
   <script src="js/app.js"></script>
   <!-- to activate the test runner, add the "?test" query string parameter -->
   <script src="tests/runner.js"></script>
