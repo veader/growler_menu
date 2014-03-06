@@ -25,42 +25,39 @@
       </div>
     </div>
 
-    <div class="container" role="main">
-      <div class="row col-xs-12 col-md-8">
-        {{outlet}}
-      </div>
+    <div class="container main-container" role="main">
+      {{outlet}}
     </div>
   </script>
 
   <script type="text/x-handlebars" id="loading">
-    <p class="lead text-center">Loading Beers...</p>
+    <div class="container">
+      <p class="lead text-center">Loading Beers...</p>
+    </div>
   </script>
 
   <script type="text/x-handlebars" id="index">
-    <div class="row">
-      <div class="col-xs-4 hidden-lg hidden-md"></div>
-      <div class="col-xs-3 col-md-4">
+    <div class="container">
+      <div class="row text-center">
         <img src="images/beergrowlernation_logo.png">
+        <br>
+        {{view Ember.Select
+                content=beerTypes
+                value=selectedBeerType
+                prompt='Select type to filter...'}}
       </div>
-      <div class="col-xs-4 hidden-lg hidden-md"></div>
-    </div>
-    <div>
-      {{view Ember.Select
-              content=beerTypes
-              value=selectedBeerType
-              prompt='Select type to filter...'}}
-    </div>
-    <hr>
-    <div class="list-group">
-      {{#each beer in sortedBeers}}
-        <div class="list-group-item">
-          <h4 class="list-group-item-heading">{{beer.name}}</h4>
-          <p class="list-group-item-text">
-            {{beer.location}} <br>
-            <small class="muted">{{beer.type}}</small>
-          </p>
-        </div>
-      {{/each}}
+      <hr>
+      <div class="list-group">
+        {{#each beer in sortedBeers}}
+          <div class="list-group-item">
+            <h4 class="list-group-item-heading">{{beer.name}}</h4>
+            <p class="list-group-item-text">
+              {{beer.location}} <br>
+              <small class="muted">{{beer.type}}</small>
+            </p>
+          </div>
+        {{/each}}
+      </div>
     </div>
   </script>
 
